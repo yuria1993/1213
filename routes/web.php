@@ -19,4 +19,4 @@ Route::get('/', [TodoController::class,'index']
 );
 Route::post('/create',[TodoController::class,'index']);
 Route::post('/update',[TodoController::class,'index']);
-Route::post('/deleate',[TodoController::class,'index']);
+Route::post('/delete{id}',[TodoController::class,'index']);
