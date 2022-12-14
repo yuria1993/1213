@@ -4,19 +4,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{asset('/css/laravel_todolist.css')}}">
   <title>Todo List</title>
 </head>
 
 <body>
-  <h1>Todo List</h1>
+  <h1 class="list_title">Todo List</h1>
 <div class="list_table">
 
 
-<form method="POST" action="/create">
+<form method="GET" action="/">
   @csrf
+</form>
 
-  <input type="text" value=""name="content">
+<form method="POST" action="/create">
+ <input type="text" value=""name="content">
   <input type="submit" value="追加">
+</form>
+
 </form>
 
 <table>
@@ -28,12 +33,15 @@
   </tr>
 
   @foreach($todos as $todo)
-  <td>{{$todo->datatime}}</td>
+  <td>{{$todo->created_at}}</td>
   <td>{{$todo->content}}</td>
   <td><a href="/update/{{$todo->id}}">更新</a></td>
   <td><a href="/delete/{{$todo->id}}">削除</a></td>
 </tr>
 @endforeach
+
+
+</table>
 
 <form method="POST" action="/update">
   @csrf
@@ -44,7 +52,9 @@
   @csrf
   <input type="submit" name="delete" value="削除">
 </form>
-</table>
+
+
+
 </div>  
 </body>
 </html>

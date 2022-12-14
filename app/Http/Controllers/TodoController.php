@@ -11,12 +11,19 @@ class TodoController extends Controller
     {
         $todos = Todo::all();
         return view('index',["todos" => $todos]);
-        return redirect('/');
+        
+    }
+
+    public function create()
+    {
+        return view('index');
     }
 
     public function update(Request $request)
     {
-        $todo = Todo::find($request->$id)->update(['content'=> $request->content]);
+        $todo = Todo::find;
+        $todo->save();
+        ($request->$id)->update(['content'=> $request->content]);
 
         return redirect('/');
     }
