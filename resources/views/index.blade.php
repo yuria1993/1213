@@ -12,12 +12,8 @@
   <h1 class="list_title">Todo List</h1>
 <div class="list_table">
 
-
-<form method="get" action="/">
-  @csrf
-</form>
-
 <form method="POST" action="/create">
+  @csrf
  <input type="text" value=""name="content">
   <input type="submit" value="追加">
 </form>
