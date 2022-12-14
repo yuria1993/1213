@@ -13,7 +13,7 @@
 <div class="list_table">
 
 
-<form method="GET" action="/">
+<form method="get" action="/">
   @csrf
 </form>
 
@@ -24,6 +24,8 @@
 
 </form>
 
+
+@if(@isset($todo))
 <table>
   <tr>
     <th>作成日</th>
@@ -32,13 +34,13 @@
     <th>削除</th>
   </tr>
 
-  @foreach($todos as $todo)
+  
   <td>{{$todo->created_at}}</td>
   <td>{{$todo->content}}</td>
-  <td><a href="/update/{{$todo->id}}">更新</a></td>
-  <td><a href="/delete/{{$todo->id}}">削除</a></td>
+  <td>{{$todo->id}}></td>
+  <td>{{$todo->id}}</td>
 </tr>
-@endforeach
+@endif
 
 
 </table>
