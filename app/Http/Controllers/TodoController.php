@@ -15,10 +15,6 @@ class TodoController extends Controller
         
     }
 
-    public function add()
-    {
-        return view('add');
-    }
 
     public function create(TodoRequest $request)
     {
@@ -26,12 +22,12 @@ class TodoController extends Controller
         Todo::create($todo);
         return redirect('/');
     }
-    
+
     public function update(Request $request)
     {
-        $todo = Todo::find;
-        $todo->save();
-        ($request->$id)->update(['content'=> $request->content]);
+        $todo = $request->all();
+        unset($todo['_token']);
+        Todo::where('id',$request->id)->update($todo);
 
         return redirect('/');
     }

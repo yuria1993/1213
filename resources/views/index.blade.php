@@ -22,38 +22,46 @@
   <input type="submit" value="追加">
 </form>
 
-</form>
-
-
-@if(@isset($todo))
 <table>
   <tr>
     <th>作成日</th>
     <th>タスク名</th>
     <th>更新</th>
     <th>削除</th>
-  </tr>
 
-  
-  <td>{{$todo->created_at}}</td>
-  <td>{{$todo->content}}</td>
-  <td>{{$todo->id}}></td>
-  <td>{{$todo->id}}</td>
-</tr>
+
+@if(@isset($todo))
+<table>
+  <tr>
+
+    <th>作成日</th>
+    <td>{{$todo->created_at}}</td>
+
+    <th>タスク名</th>
+    <td>{{$todo->content}}</td>
+
+    <th>更新</th>
+     <td>{{$todo->id}}></td>
+     <form method="POST" action="/update">
+  @csrf
+  <input type="submit" name="update" value="更新">
+</form>
+
+    <th>削除</th>
+    <td>{{$todo->id}}</td>
+    <form method="POST" action="/delete">
+  @csrf
+  <input type="submit" name="delete" value="削除">
+</form>
+  </tr>
 @endif
 
 
 </table>
 
-<form method="POST" action="/update">
-  @csrf
-  <input type="submit" name="update" value="更新">
-</form>
 
-<form method="POST" action="/delete">
-  @csrf
-  <input type="submit" name="delete" value="削除">
-</form>
+
+
 
 
 
