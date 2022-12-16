@@ -18,19 +18,14 @@
 
 <form method="POST" action="/create" class="new-content">
   @csrf
-  
+
  <input type="text"  size="40" value="" name="content">
   <input type="submit" value="追加" class="create_button">
 </form>
 
-@if($errors->any())
-<div class="error_content">
-  <ul>
-    20文字以上は入力できません
-
-</ul>
-</div>
-@endif
+@foreach($errors->all()as $error)
+{{ $error }}
+@endforeach
 
 
   <table>

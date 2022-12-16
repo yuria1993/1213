@@ -13,11 +13,7 @@ class TodoRequest extends FormRequest
      */
     public function authorize()
     {
-         if($this->path()=='/'){
-            return true;
-         } else {
-            return false;
-         }
+       return true;
     }
 
     /**
@@ -35,8 +31,7 @@ class TodoRequest extends FormRequest
 
     public function messages()
     {
-        return [
-            'content|required|string|max:20' => '20文字以内で入力してください',
-        ];
+    return  view(['content.|string|max:20'=>'20文字以内で入力してください']);
+    return view(['content.required'=>'文字を入力してください']);
     }
 }

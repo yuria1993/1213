@@ -12,12 +12,9 @@ class TodoController extends Controller
     public function index(Request $request)
     {
         $todos = Todo::all();
-        return view('index', ['todos'=>$todos]);
+        return view('index', ['todo'=$todos]);
     }
 
-   public function post(TodoRequest $request){
-    return view('index',['msg'=>'正しく入力されました']);
-   }
 
     public function create(TodoRequest $request)
     {
