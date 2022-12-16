@@ -18,7 +18,8 @@
 
 <form method="POST" action="/create" class="new-content">
   @csrf
- <input type="text"  size="60" value="" name="content">
+  
+ <input type="text"  size="40" value="" name="content">
   <input type="submit" value="追加" class="create_button">
 </form>
 

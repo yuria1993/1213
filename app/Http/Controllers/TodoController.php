@@ -13,23 +13,11 @@ class TodoController extends Controller
     {
         $todos = Todo::all();
         return view('index', ['todos'=>$todos]);
-        $error = [
-            'content' => 'required|string|max:20',
-        ];
-        $messages = [
-            'content.required|string|max:20' => '20文字以内で入力してください'
-        ];
-        $validator = $validator::make($request->all(),$error,$messages);
-
-        if($validator->fails()){
-            $msg = '20文字以内で入力してください';
-            return redirect('/',['msg'=>$msg])
-            ->withErrors($validator)
-            ->withInput();
-        }
-        return view('/',);
     }
 
+   public function post(TodoRequest $request){
+    return view('index',['msg'=>'正しく入力されました']);
+   }
 
     public function create(TodoRequest $request)
     {
