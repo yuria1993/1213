@@ -27,14 +27,19 @@ class TodoController extends Controller
     {
         $todo = $request->all();
         unset($todo['_token']);
+        unset($todo['update']);
         Todo::where('id',$request->id)->update($todo);
 
         return redirect('/');
     }
 
-    public function delete(Request $id)
+    public function delete(Request $request)
     {
-        Todo::find($id)->delete();
+        $todo = $request->all();
+        unset($todo['_token']);
+        unset($todo['delete']);
+        Todo::where('id',$request->id)->delete($todo);
+
         return redirect('/');
     }
 }

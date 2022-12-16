@@ -1,0 +1,51 @@
+.container {
+  background-color: #5c73b7;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.content {
+  background-color: white;
+  width: 50vw;
+  padding: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  color: black;
+  border-radius: 10px;
+}
+
+.new-content {
+  display: inline-block;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  margin: 5px;
+}
+
+.create_button {
+  border: 2px solid #f7c6bd;
+  color: #ff6c94;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 8px 8px;
+}
+
+.update_button {
+  border: 2px solid #fecf8d;
+  color: #f69679;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 8px 8px;
+}
+
+.delete_button {
+  border: 2px solid #aeb5dc;
+  color: #8490c8;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 8px 8px;
+}

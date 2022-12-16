@@ -9,58 +9,50 @@
 </head>
 
 <body>
+  <div class="container">
+    <div class="content">
   <h1 class="list_title">Todo List</h1>
 <div class="list_table">
 
-<form method="POST" action="/create">
+<form method="POST" action="/create" class="new-content">
   @csrf
- <input type="text" value=""name="content">
-  <input type="submit" value="追加">
+ <input type="text"  size="20" value="" name="content">
+  <input type="submit" value="追加" class="create_button">
 </form>
 
-<table>
-  <tr>
-    <th>作成日</th>
-    <th>タスク名</th>
-    <th>更新</th>
-    <th>削除</th>
+  <table>
+    <tr>
+      <th>作成日</th>
+      <th>タスク名</th>
+      <th>更新</th>
+      <th>削除</th>
+    </tr>
 
-
-@if(@isset($todo))
-<table>
-  <tr>
-
-    <th>作成日</th>
-    <td>{{$todo->created_at}}</td>
-
-    <th>タスク名</th>
-    <td>{{$todo->content}}</td>
-
-    <th>更新</th>
-     <td>{{$todo->id}}></td>
-     <form method="POST" action="/update">
-  @csrf
-  <input type="submit" name="update" value="更新">
-</form>
-
-    <th>削除</th>
-    <td>{{$todo->id}}</td>
-    <form method="POST" action="/delete">
-  @csrf
-  <input type="submit" name="delete" value="削除">
-</form>
-  </tr>
-@endif
-
-
-</table>
-
-
-
-
-
-
-
+    @foreach($todos as $todo)
+    <tr>
+      <td>{{ $todo->created_at }}</td>
+      <form method="POST" action="/update">
+          @csrf
+        <td>
+          <input type="text" name="content" value="{{ $todo->content }}">
+        </td>
+        <td>
+            <input type="hidden" name="id" value="{{ $todo->id }}">
+            <input type="submit" name="update" value="更新" class="update_button">
+        </td>
+      </form>
+      <td>
+        <form method="POST" action="/delete">
+          @csrf
+          <input type="hidden" name="id" value="{{ $todo->id }}">
+          <input type="submit" name="delete" value="削除" class="delete_button">
+        </form>
+      </td>
+    </tr>
+    @endforeach
+  </table>
+</div>
 </div>  
+</div>
 </body>
 </html>

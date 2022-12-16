@@ -25,7 +25,6 @@ class TodoRequest extends FormRequest
     {
         return [
             'content'=>'required',
-            'id'=>'required'
         ];
     }
 }
