@@ -14,11 +14,22 @@
   <h1 class="list_title">Todo List</h1>
 <div class="list_table">
 
+
 <form method="POST" action="/create" class="new-content">
   @csrf
- <input type="text"  size="20" value="" name="content">
+ <input type="text"  size="60" value="" name="content">
   <input type="submit" value="追加" class="create_button">
 </form>
+
+@if($errors->any())
+<div class="error_content">
+  <ul>
+    20文字以上は入力できません
+
+</ul>
+</div>
+@endif
+
 
   <table>
     <tr>
@@ -34,7 +45,7 @@
       <form method="POST" action="/update">
           @csrf
         <td>
-          <input type="text" name="content" value="{{ $todo->content }}">
+          <input type="text"  size="30" name="content" value="{{ $todo->content }}">
         </td>
         <td>
             <input type="hidden" name="id" value="{{ $todo->id }}">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Http\Requests\TodoRequest;
+use Validator;
 
 class TodoController extends Controller
 {
@@ -12,7 +13,21 @@ class TodoController extends Controller
     {
         $todos = Todo::all();
         return view('index', ['todos'=>$todos]);
-        
+        $error = [
+            'content' => 'required|string|max:20',
+        ];
+        $messages = [
+            'content.required|string|max:20' => '20文字以内で入力してください'
+        ];
+        $validator = $validator::make($request->all(),$error,$messages);
+
+        if($validator->fails()){
+            $msg = '20文字以内で入力してください';
+            return redirect('/',['msg'=>$msg])
+            ->withErrors($validator)
+            ->withInput();
+        }
+        return view('/',);
     }
 
 
