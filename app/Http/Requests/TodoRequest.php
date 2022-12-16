@@ -25,13 +25,16 @@ class TodoRequest extends FormRequest
     {
         return [
             'content'=>'required|string|max:20',
-        ];
-        
+        ];       
     }
 
     public function messages()
     {
-    return  view(['content.|string|max:20'=>'20文字以内で入力してください']);
-    return view(['content.required'=>'文字を入力してください']);
+        return[
+            'content.required'=>'文字を入力してください',
+            'content.max:20'=>'20文字以内で入力してください'
+        ];
     }
 }
+
+   

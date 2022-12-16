@@ -36,7 +36,7 @@
       <th>削除</th>
     </tr>
 
-    @foreach($todos as $todo)
+    @foreach(['todos'=>$todo])
     <tr>
       <td>{{ $todo->created_at }}</td>
       <form method="POST" action="/update">

@@ -12,7 +12,7 @@ class TodoController extends Controller
     public function index(Request $request)
     {
         $todos = Todo::all();
-        return view('index', ['todo'=$todos]);
+        return view('index', ['todo'=>$todos]);
     }
 
 
