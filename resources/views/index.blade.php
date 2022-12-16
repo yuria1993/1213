@@ -23,8 +23,10 @@
   <input type="submit" value="追加" class="create_button">
 </form>
 
-@foreach($errors->all()as $error)
-{{ $error }}
+@foreach($errors->all() as $error)
+<ul>
+<li>{{ $error }}</li>
+</ul>
 @endforeach
 
 
@@ -36,7 +38,7 @@
       <th>削除</th>
     </tr>
 
-    @foreach(['todos'=>$todo])
+    @foreach($todo as $todo)
     <tr>
       <td>{{ $todo->created_at }}</td>
       <form method="POST" action="/update">
